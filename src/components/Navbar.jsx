@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Container = styled.div`
   height: 60px;
@@ -32,8 +34,7 @@ const SearchContainer = styled.div`
   padding: 5px;
 `;
 
-const Input = styled.input`
-`;
+const Input = styled.input``;
 
 const Center = styled.div`
   flex: 1;
@@ -76,6 +77,11 @@ const Navbar = () => {
           <Right>
             <MenuItem>REGISTER</MenuItem>
             <MenuItem>SIGN IN</MenuItem>
+            <MenuItem>
+              <Badge badgeContent={4} color="secondary">
+                  <ShoppingCartIcon />
+              </Badge>
+            </MenuItem>
           </Right>
         </Wrapper>
       </Container>
