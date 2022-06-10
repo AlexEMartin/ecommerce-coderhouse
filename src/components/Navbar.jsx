@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Container = styled.div`
   height: 60px;
-  background-color: #fefe48;
+  background-color: #fdfd3f;
 `;
 
 const Wrapper = styled.div`
