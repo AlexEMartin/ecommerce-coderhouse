@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     display: flex;  
@@ -48,7 +49,9 @@ const obtenerDatos = async() => {
             productos.map(producto => {
             return (
                 <Ficha key={producto.id}>
-                    <Image src={producto.image} alt='producto' />
+                    <Link to={producto.id.toString()}>
+                        <Image src={producto.image} alt='producto' />
+                    </Link>
                     <Desc>{producto.title}</Desc>
                     <Desc><strong>U$D {producto.price}</strong></Desc>
                 </Ficha>
