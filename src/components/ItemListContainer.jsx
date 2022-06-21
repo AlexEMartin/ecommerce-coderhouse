@@ -17,7 +17,7 @@ const Ficha = styled.div`
 `;
 
 const Image = styled.img`
-    width: 200px;
+    height: 200px;
     margin-left: 4rem;
     margin-right: 4rem;
 `;
@@ -49,7 +49,7 @@ const obtenerDatos = async() => {
             productos.map(producto => {
             return (
                 <Ficha key={producto.id}>
-                    <Link to={producto.id.toString()}>
+                    <Link to={'/item/' + producto.id.toString()}>
                         <Image src={producto.image} alt='producto' />
                     </Link>
                     <Desc>{producto.title}</Desc>

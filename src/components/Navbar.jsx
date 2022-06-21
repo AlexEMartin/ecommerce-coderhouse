@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   height: 60px;
@@ -72,11 +73,11 @@ const Navbar = () => {
             </SearchContainer>
           </Left>
           <Center>
-            <Logo>Mercado Pampeano.</Logo>
+            <Logo><Link style={{textDecoration: 'none'}} to='/'>Mercado Pampeano.</Link></Logo>
           </Center>
           <Right>
-            <MenuItem>REGISTER</MenuItem>
-            <MenuItem>SIGN IN</MenuItem>
+            <MenuItem><Link style={{textDecoration: 'none'}} to='/category/jewelery'>Jewelery</Link></MenuItem>
+            <MenuItem><Link style={{textDecoration: 'none'}} to='/category/electronics'>Electronics</Link></MenuItem>
             <MenuItem>
               <Badge badgeContent={4} color="secondary">
                   <ShoppingCartIcon />

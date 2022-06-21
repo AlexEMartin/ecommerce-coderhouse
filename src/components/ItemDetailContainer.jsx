@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
   
 
     const obtenerDatos = async () => {
-      const res = await fetch("https://fakestoreapi.com/products?limit=4");
+      const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
       let renderProduct = [];
       const unProducto = data.find((producto) => {
