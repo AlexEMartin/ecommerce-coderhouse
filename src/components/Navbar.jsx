@@ -80,7 +80,7 @@ const Navbar = () => {
             <MenuItem><Link style={{textDecoration: 'none'}} to='/category/electronics'>Electronics</Link></MenuItem>
             <MenuItem>
               <Badge badgeContent={4} color="secondary">
-                  <ShoppingCartIcon />
+                  <Link to='/cart'><ShoppingCartIcon /></Link>
               </Badge>
             </MenuItem>
           </Right>
