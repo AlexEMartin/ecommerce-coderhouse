@@ -75,13 +75,8 @@ const ItemDetailContainer = () => {
 
     const [ isAddedToCart, setAddedToCart ] = useState(false);
 
-    function handleOnAdd(e) {
-      const btn = e.currentTarget;
-      const parent = btn.parentElement;
-      const productos = parent.querySelector('#cartValue');
-      console.log(productos.innerText);
-      const cantidadProductos = productos.innerText;
-      sessionStorage.setItem('productos', cantidadProductos);
+    function handleOnAdd(marcador) {
+      console.log(marcador)
       setAddedToCart(true);
     }
 

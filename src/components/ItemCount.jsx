@@ -70,7 +70,7 @@ const ItemCount = ({stock, onAdd}) => {
         <Numero id='cartValue'>{marcador}</Numero>
         <Boton onClick={suma}>+</Boton>
       </Contador>
-      <CarritoBtn onClick={onAdd}>Terminar compra</CarritoBtn>
+      <CarritoBtn onClick={() => onAdd(marcador)}>Terminar compra</CarritoBtn>
     </Container>
   );
 };
