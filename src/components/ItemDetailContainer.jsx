@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
+import { CartContext } from "../context/CartContext";
 
 
 const Container = styled.div`
@@ -59,7 +60,7 @@ const ItemDetailContainer = () => {
   useEffect(() => {
      obtenerDatos();
      
-  }, [])
+  }, [productos])
 
     const obtenerDatos = async () => {
       const res = await fetch("https://fakestoreapi.com/products");
@@ -69,16 +70,19 @@ const ItemDetailContainer = () => {
         return producto.id === parseInt(productId)
       })
       renderProduct.push(unProducto);
-      console.log(renderProduct)
+      // console.log(renderProduct)
       setProductos(renderProduct);
     };
 
     const [ isAddedToCart, setAddedToCart ] = useState(false);
 
-    function handleOnAdd(marcador) {
-      console.log(marcador)
+    function handleToCart(marcador) {
+      // console.log(marcador)
       setAddedToCart(true);
+      addToCart(productos, marcador);
     }
+
+    const { addToCart } = useContext(CartContext);
 
     return (
       <Agrupar>
@@ -98,7 +102,7 @@ const ItemDetailContainer = () => {
           })}
         </Container>
         {
-          !isAddedToCart ? <ItemCount onAdd={handleOnAdd} stock={5} /> 
+          !isAddedToCart ? <ItemCount onAdd={handleToCart} stock={5} /> 
           : 
           <Link to='/cart'><CarritoBtn>Ir a Carrito</CarritoBtn></Link>
         }

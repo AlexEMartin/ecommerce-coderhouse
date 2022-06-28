@@ -45,6 +45,7 @@ const obtenerDatos = async() => {
 
   return (
     <Container>
+        {productos.length === 0 && <h2>DOWNLOADING...</h2>}
         {
             productos.map(producto => {
             return (
