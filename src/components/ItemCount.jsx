@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 15rem;
-  height: 12rem;
+  height: 7rem;
   margin-left: 2rem;
   margin-right: 10rem;
   margin-top: 5rem;
@@ -17,13 +17,7 @@ const Container = styled.div`
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 `;
 
-const ItemTitle = styled.h4`
-  color: #1a1a1a;
-  font-weight: bold;
-`;
-
 const Contador = styled.div`
-  margin-top: 2rem;
 `;
 
 const Boton = styled.button`
@@ -37,7 +31,7 @@ const Numero = styled.span`
 `;
 
 const CarritoBtn = styled.button`
-  width: 80%;
+  width: 60%;
   height: 2rem;
   background-color: #1515ab;
   color: white;
@@ -64,7 +58,6 @@ const ItemCount = ({stock, onAdd}) => {
 
   return (
     <Container>
-      <ItemTitle>Alto Producto</ItemTitle>
       <Contador>
         <Boton onClick={resta}>-</Boton>
         <Numero id='cartValue'>{marcador}</Numero>

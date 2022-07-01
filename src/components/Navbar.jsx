@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import styled from "styled-components";
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -62,6 +63,11 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+
+  const { cart } = useContext(CartContext);
+
+  const cartLength = cart.length;
+
   return (
     <div>
       <Container>
@@ -79,9 +85,12 @@ const Navbar = () => {
             <MenuItem><Link style={{textDecoration: 'none'}} to='/category/jewelery'>Jewelery</Link></MenuItem>
             <MenuItem><Link style={{textDecoration: 'none'}} to='/category/electronics'>Electronics</Link></MenuItem>
             <MenuItem>
-              <Badge badgeContent={4} color="secondary">
+            {
+              cartLength > 0 && 
+              <Badge badgeContent={cartLength} color="secondary">
                   <Link to='/cart'><ShoppingCartIcon /></Link>
               </Badge>
+            }
             </MenuItem>
           </Right>
         </Wrapper>

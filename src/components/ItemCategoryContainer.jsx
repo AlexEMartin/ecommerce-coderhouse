@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
 import { useParams } from "react-router-dom";
+import { PacmanLoader } from 'react-spinners';
 
 
 const Container = styled.div`
@@ -48,12 +49,14 @@ if(categoryId === 'jewelery') {
 
 
 const obtenerJewerly = async() => {
+    setProductos([]);
     const res = await fetch('https://fakestoreapi.com/products/category/jewelery'); 
     const data = await res.json();
     setProductos(data);
 }
 
 const obtenerElectronics = async() => {
+    setProductos([]);
     const res = await fetch('https://fakestoreapi.com/products/category/electronics'); 
     const data = await res.json();
     setProductos(data);
@@ -61,6 +64,14 @@ const obtenerElectronics = async() => {
 
   return (
     <Container>
+        {   productos.length === 0 && 
+            <PacmanLoader
+            color="#3f8bfc"
+            cssOverride={{marginTop: '6rem', marginRight: '9rem'}}
+            margin={6}
+            size={35}
+        />
+        }
         {
             productos.map(producto => {
             return (

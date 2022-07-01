@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom";
 import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 import { CartContext } from "../context/CartContext";
-
+import { PacmanLoader } from "react-spinners";
 
 const Container = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  min-width: 8rem;
+  min-height: 8rem;
   margin-top: 5rem;
   padding: 2rem;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
@@ -45,7 +47,7 @@ const CarritoBtn = styled.button`
   background-color: #1515ab;
   color: white;
   font-weight: bold;
-  margin-top: 12rem;
+  margin-top: 8rem;
   margin-right: 10rem;
   cursor: pointer;
 `;
@@ -87,7 +89,14 @@ const ItemDetailContainer = () => {
     return (
       <Agrupar>
         <Container>
-          {productos.length === 0 && <h2>La API está muy lenta...</h2>}
+          {productos.length === 0 &&  
+            <PacmanLoader
+              color="#3f8bfc"
+              cssOverride={{marginTop: '2rem', marginRight: '5rem'}}
+              margin={6}
+              size={25}
+            />
+          }
           {productos.map((producto) => {
             return (
               <Ficha key={producto.id}>

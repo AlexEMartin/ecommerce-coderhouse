@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
+import { PacmanLoader } from 'react-spinners';
 
 const Container = styled.div`
     display: flex;  
@@ -45,7 +46,14 @@ const obtenerDatos = async() => {
 
   return (
     <Container>
-        {productos.length === 0 && <h2>DOWNLOADING...</h2>}
+        {productos.length === 0 && 
+        <PacmanLoader
+            color="#3f8bfc"
+            cssOverride={{marginTop: '6rem', marginRight: '9rem'}}
+            margin={6}
+            size={35}
+        />
+        }
         {
             productos.map(producto => {
             return (
