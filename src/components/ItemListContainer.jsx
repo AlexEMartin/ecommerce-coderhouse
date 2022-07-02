@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
 import { PacmanLoader } from 'react-spinners';
+import { getItems } from '../services/firestore';
 
 const Container = styled.div`
     display: flex;  
@@ -18,7 +19,7 @@ const Ficha = styled.div`
 `;
 
 const Image = styled.img`
-    height: 200px;
+    max-height: 150px;
     margin-left: 4rem;
     margin-right: 4rem;
 `;
@@ -33,16 +34,16 @@ const ItemStore = () => {
 const [ productos, setProductos ] = useState([]);
 
 useEffect(() => {
-  obtenerDatos();
+//   obtenerDatos();
+  getItems().then(res => setProductos(res));
+}, [])
 
-}, [productos])
 
-
-const obtenerDatos = async() => {
-    const res = await fetch('https://fakestoreapi.com/products?limit=4'); 
-    const data = await res.json();
-    setProductos(data);
-}
+// const obtenerDatos = async() => {
+//     const res = await fetch('https://fakestoreapi.com/products?limit=4'); 
+//     const data = await res.json();
+//     setProductos(data);
+// }
 
   return (
     <Container>

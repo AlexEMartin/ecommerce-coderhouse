@@ -73,7 +73,7 @@ const Cart = () => {
   const calcularTotal = () => {
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
-      total += (cart[i][0].price * cart[i].marcador);
+      total += (cart[i].price * cart[i].marcador);
     }
     return total;
   }
@@ -93,13 +93,13 @@ const Cart = () => {
       }
       {
         cart.map((producto) => (
-          <div key={producto[0].id}>
+          <div key={producto.id}>
           <Lista>
               <ImageContainer>
-              <Image src={producto[0].image} alt='producto' />
+              <Image src={producto.image} alt='producto' />
               </ImageContainer>
               <Desc>
-                {producto[0].title}
+                {producto.title}
               </Desc>
               <Marcador>
                 Cantidad: {producto.marcador}
@@ -107,9 +107,9 @@ const Cart = () => {
           </Lista>
           <Div1>
             <Desc style={{marginBottom: '1rem'}}>
-               <strong>Precio: </strong>{producto[0].price * producto.marcador} U$D
+               <strong>Precio: </strong>{producto.price * producto.marcador} U$D
             </Desc>
-            <RemoveBtn onClick={() => RemoveFromCart(producto[0].id)}>Remover Item</RemoveBtn>
+            <RemoveBtn onClick={() => RemoveFromCart(producto.id)}>Remover Item</RemoveBtn>
           </Div1>
           </div>
         ))

@@ -16,10 +16,10 @@ const CartProvider = ({ children }) => {
   // Agregar al carrito
   const addToCart = (productos, marcador) => {
 
-    const idProducto = productos[0].id;
+    const idProducto = productos.id;
     
     //some devuelve true o false
-    function isInCart(id) {return cart.some((prod) => prod[0].id === id)};
+    function isInCart(id) {return cart.some((prod) => prod.id === id)};
     
     if (isInCart(idProducto)) {
 
@@ -32,7 +32,7 @@ const CartProvider = ({ children }) => {
   };
 
   const RemoveFromCart = (id) => {
-    const filtrado = cart.filter((prod) => prod[0].id !== id);
+    const filtrado = cart.filter((prod) => prod.id !== id);
     setCart(filtrado);
     
   }

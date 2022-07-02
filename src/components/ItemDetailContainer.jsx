@@ -5,6 +5,7 @@ import ItemCount from './ItemCount'
 import { Link } from 'react-router-dom'
 import { CartContext } from "../context/CartContext";
 import { PacmanLoader } from "react-spinners";
+import { traerUnProducto } from '../services/firestore';
 
 const Container = styled.div`
   display: flex;
@@ -59,12 +60,21 @@ const ItemDetailContainer = () => {
 
   const [productos, setProductos] = useState([]);
 
-  useEffect(() => {
-     obtenerDatos();
+  // useEffect(() => {
+  //    obtenerDatos();
      
-  }, [productos])
+  // }, [productos])
 
-    const obtenerDatos = async () => {
+  useEffect(() => {
+    traerUnProducto(productId)
+      .then((res) => {
+        setProductos(res);
+        console.log(productos)        
+      })
+  }, [productId]);
+
+  /*  
+      const obtenerDatos = async () => {
       const res = await fetch("https://fakestoreapi.com/products");
       const data = await res.json();
       let renderProduct = [];
@@ -72,10 +82,10 @@ const ItemDetailContainer = () => {
         return producto.id === parseInt(productId)
       })
       renderProduct.push(unProducto);
-      // console.log(renderProduct)
+      console.log(renderProduct)
       setProductos(renderProduct);
     };
-
+  */  
     const [ isAddedToCart, setAddedToCart ] = useState(false);
 
     function handleToCart(marcador) {
@@ -89,7 +99,7 @@ const ItemDetailContainer = () => {
     return (
       <Agrupar>
         <Container>
-          {productos.length === 0 &&  
+          {!productos &&  
             <PacmanLoader
               color="#3f8bfc"
               cssOverride={{marginTop: '2rem', marginRight: '5rem'}}
@@ -97,18 +107,16 @@ const ItemDetailContainer = () => {
               size={25}
             />
           }
-          {productos.map((producto) => {
-            return (
-              <Ficha key={producto.id}>
-                <Image src={producto.image} alt="producto" />
-                <Desc>{producto.title}</Desc>
-                <Desc><em>{producto.description}</em></Desc>
+          {productos &&
+              <Ficha key={productos.id}>
+                <Image src={productos.image} alt="producto" />
+                <Desc>{productos.title}</Desc>
+                <Desc><em>{productos.description}</em></Desc>
                 <Desc>
-                  <strong>U$D {producto.price}</strong>
+                  <strong>U$D {productos.price}</strong>
                 </Desc>
               </Ficha>
-            );
-          })}
+          }    
         </Container>
         {
           !isAddedToCart ? <ItemCount onAdd={handleToCart} stock={5} /> 
