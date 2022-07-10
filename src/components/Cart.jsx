@@ -88,7 +88,7 @@ const Cart = () => {
     for (let i = 0; i < cart.length; i++) {
       total += cart[i].price * cart[i].marcador;
     }
-    return total;
+    return total.toFixed(1);
   };
 
   const handleOrder = () => {
@@ -144,7 +144,7 @@ const Cart = () => {
           <Div1>
             <Desc style={{ marginBottom: "1rem" }}>
               <strong>Precio: </strong>
-              {producto.price * producto.marcador} U$D
+              {producto.price.toFixed(1) * producto.marcador} U$D
             </Desc>
             <RemoveBtn onClick={() => removeFromCart(producto.id)}>
               Remover Item
