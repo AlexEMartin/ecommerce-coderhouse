@@ -13,6 +13,7 @@ const Container = styled.div`
 
 const Ficha = styled.div`
     display: flex;
+    margin-top: 2rem;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -34,16 +35,9 @@ const ItemStore = () => {
 const [ productos, setProductos ] = useState([]);
 
 useEffect(() => {
-//   obtenerDatos();
   getItems().then(res => setProductos(res));
 }, [])
 
-
-// const obtenerDatos = async() => {
-//     const res = await fetch('https://fakestoreapi.com/products?limit=4'); 
-//     const data = await res.json();
-//     setProductos(data);
-// }
 
   return (
     <Container>

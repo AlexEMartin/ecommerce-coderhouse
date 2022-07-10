@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import ItemCount from './ItemCount'
-import { Link } from 'react-router-dom'
+import ItemCount from "./ItemCount";
+import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { PacmanLoader } from "react-spinners";
-import { traerUnProducto } from '../services/firestore';
+import { traerUnProducto } from "../services/firestore";
 
 const Container = styled.div`
   display: flex;
@@ -53,79 +53,60 @@ const CarritoBtn = styled.button`
   cursor: pointer;
 `;
 
-
 const ItemDetailContainer = () => {
-
   const { productId } = useParams();
 
   const [productos, setProductos] = useState([]);
 
-  // useEffect(() => {
-  //    obtenerDatos();
-     
-  // }, [productos])
-
   useEffect(() => {
-    traerUnProducto(productId)
-      .then((res) => {
-        setProductos(res);
-        console.log(productos)        
-      })
+    traerUnProducto(productId).then((res) => {
+      setProductos(res);
+      console.log(productos);
+    });
   }, [productId]);
 
-  /*  
-      const obtenerDatos = async () => {
-      const res = await fetch("https://fakestoreapi.com/products");
-      const data = await res.json();
-      let renderProduct = [];
-      const unProducto = data.find((producto) => {
-        return producto.id === parseInt(productId)
-      })
-      renderProduct.push(unProducto);
-      console.log(renderProduct)
-      setProductos(renderProduct);
-    };
-  */  
-    const [ isAddedToCart, setAddedToCart ] = useState(false);
+  const [isAddedToCart, setAddedToCart] = useState(false);
 
-    function handleToCart(marcador) {
-      // console.log(marcador)
-      setAddedToCart(true);
-      addToCart(productos, marcador);
-    }
+  function handleToCart(marcador) {
+    setAddedToCart(true);
+    addToCart(productos, marcador);
+  }
 
-    const { addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
-    return (
-      <Agrupar>
-        <Container>
-          {!productos &&  
-            <PacmanLoader
-              color="#3f8bfc"
-              cssOverride={{marginTop: '2rem', marginRight: '5rem'}}
-              margin={6}
-              size={25}
-            />
-          }
-          {productos &&
-              <Ficha key={productos.id}>
-                <Image src={productos.image} alt="producto" />
-                <Desc>{productos.title}</Desc>
-                <Desc><em>{productos.description}</em></Desc>
-                <Desc>
-                  <strong>U$D {productos.price}</strong>
-                </Desc>
-              </Ficha>
-          }    
-        </Container>
-        {
-          !isAddedToCart ? <ItemCount onAdd={handleToCart} stock={5} /> 
-          : 
-          <Link to='/cart'><CarritoBtn>Ir a Carrito</CarritoBtn></Link>
-        }
-      </Agrupar>
-    );
-}
-
+  return (
+    <Agrupar>
+      <Container>
+        {!productos && (
+          <PacmanLoader
+            color="#3f8bfc"
+            cssOverride={{ marginTop: "2rem", marginRight: "5rem" }}
+            margin={6}
+            size={25}
+          />
+        )}
+        {productos && (
+          <Ficha key={productos.id}>
+            <Image src={productos.image} alt="producto" />
+            <Desc>{productos.title}</Desc>
+            <Desc>
+              <em>{productos.description}</em>
+            </Desc>
+            <Desc>
+              <strong>U$D {productos.price}</strong>
+            </Desc>
+          </Ficha>
+        )}
+      </Container>
+      {!isAddedToCart ? (
+        <ItemCount onAdd={handleToCart} stock={5} />
+      ) : (
+        <Link to="/cart">
+          <CarritoBtn>Ir a Carrito</CarritoBtn>
+        </Link>
+      )}
+    </Agrupar>
+  );
+};
 
 export default ItemDetailContainer;

@@ -31,19 +31,19 @@ const CartProvider = ({ children }) => {
     // console.log(isInCart(idProducto));
   };
 
-  const RemoveFromCart = (id) => {
+  const removeFromCart = (id) => {
     const filtrado = cart.filter((prod) => prod.id !== id);
     setCart(filtrado);
     
   }
 
-  const VaciarCarrito = () => {
+  const vaciarCarrito = () => {
     setCart([]);
   }
 
   return (
     // En atributos paso aquello a lo que voy a acceder desde otros componentes
-    <CartContext.Provider value={{ cart, addToCart, RemoveFromCart, VaciarCarrito }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, vaciarCarrito }}>
       {children}
     </CartContext.Provider>
   );
