@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import { Routes, Route } from "react-router-dom";
 import ItemCategoryContainer from "./components/ItemCategoryContainer";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/contador" element={<ItemCount stock={5} />} />
           <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
