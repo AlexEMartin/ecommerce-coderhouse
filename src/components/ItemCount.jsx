@@ -32,7 +32,6 @@ export default ItemCount;
 
 const Container = styled.div`
   width: 200px;
-  height: 150px;
   margin: auto;
   background-color: white;
   display: flex;
@@ -54,11 +53,17 @@ const Numero = styled.span`
 `;
 
 const CarritoBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 60%;
   height: 2rem;
-  background-color: #1515ab;
+  padding: 20px 5px;
+  background-color: #2d3277;
   color: white;
   font-weight: bold;
   margin-top: 1.5rem;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 `;

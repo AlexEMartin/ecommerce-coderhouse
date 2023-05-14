@@ -172,6 +172,7 @@ const RemoveBtn = styled.button`
   border: none;
   padding: 10px;
   margin-right: 20px;
+  border-radius: 5px;
   cursor: pointer;
 `;
 
@@ -179,6 +180,7 @@ const BuyBtn = styled.button`
   background-color: #2d3277;
   color: white;
   border: none;
+  border-radius: 5px;
   padding: 10px;
   cursor: pointer;
 `;

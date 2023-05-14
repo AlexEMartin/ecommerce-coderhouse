@@ -21,9 +21,8 @@ const ItemCategoryContainer = () => {
       {productos.length === 0 && (
         <BarLoader
           color="#2d3277"
-          cssOverride={{ marginTop: "6rem", marginRight: "9rem" }}
-          margin={6}
-          size={35}
+          cssOverride={{ margin: 'auto' }}
+          size={55}
         />
       )}
       {productos.map((producto) => {

@@ -16,8 +16,7 @@ const ItemStore = () => {
       {productos.length === 0 && (
         <BarLoader
           color="#2d3277"
-          cssOverride={{ marginTop: "6rem", marginRight: "9rem" }}
-          margin={6}
+          cssOverride={{ margin: 'auto' }}
           size={35}
         />
       )}

@@ -35,8 +35,7 @@ const ItemDetailContainer = () => {
         {!productos && (
           <BarLoader
             color="#2d3277"
-            cssOverride={{ marginTop: "2rem", marginRight: "5rem" }}
-            margin={6}
+            cssOverride={{ magin: 'auto' }}
             size={25}
           />
         )}
@@ -111,8 +110,10 @@ const CarritoBtn = styled.button`
   bottom: 0;
   width: 100px;
   height: 40px;
-  background-color: #1515ab;
+  background-color: #2d3277;
   color: white;
   font-weight: bold;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 `;
