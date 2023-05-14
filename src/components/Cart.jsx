@@ -2,75 +2,8 @@ import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { createHandleOrder } from '../services/firestore'
-import Swal from 'sweetalert2'
-
-
-const Lista = styled.div`
-  max-width: 80vw;
-  height: 24vh;
-  background-color: #eeeded;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 1rem auto 0 auto;
-`;
-
-const ImageContainer = styled.div`
-  width: 4rem;
-  margin-left: 2rem;
-  border-radius: 50%;
-  background-color: white;
-  padding: 20px;
-`;
-
-const Image = styled.img`
-  max-width: 3.5rem;
-  max-height: 4rem;
-  padding: 0px;
-`;
-
-const Desc = styled.span`
-  color: #242020;
-  font-weight: 400;
-  margin-left: 2rem;
-`;
-
-const Marcador = styled.span`
-  color: #242020;
-  font-weight: 800;
-  margin-right: 2rem;
-`;
-
-const Div1 = styled.div`
-  width: 80vw;
-  height: 3vh;
-  background-color: #eeeded;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 auto 0 auto;
-`;
-
-const RemoveBtn = styled.button`
-  background-color: #fe4a49;
-  color: white;
-  border: 1px solid black;
-  margin-right: 1.8rem;
-  margin-bottom: 2rem;
-  padding: 10px;
-  cursor: pointer;
-`;
-
-const BuyBtn = styled.button`
-  background-color: #4aa515;
-  color: white;
-  border: 1px solid black;
-  margin-right: 1.8rem;
-  margin-bottom: 2rem;
-  padding: 10px;
-  cursor: pointer;
-`;
+import { createHandleOrder } from "../services/firestore";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const { cart, removeFromCart, vaciarCarrito } = useContext(CartContext);
@@ -105,12 +38,12 @@ const Cart = () => {
     createHandleOrder(dataOrder).then((res) => {
       vaciarCarrito();
       Swal.fire(
-        'Compra Exitosa!',
+        "Compra Exitosa!",
         `Gracias ${dataOrder.buyer.name}, has realizado el importe de U$D ${dataOrder.total}. Pronto recibirás tu pedido :)`,
-        'success'
-      )
-    })
-  }
+        "success"
+      );
+    });
+  };
 
   return (
     <div>
@@ -119,12 +52,9 @@ const Cart = () => {
           style={{
             backgroundColor: "#FE4A49",
             color: "#FFFDF9",
-            height: "16vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "80%",
-            margin: "2rem auto 0 auto",
             fontSize: "18px",
           }}
         >
@@ -134,7 +64,7 @@ const Cart = () => {
       {cart.length === 0 && noFuimo()}
       {cart.map((producto) => (
         <div key={producto.id}>
-          <Lista>
+          <Lista className="buyList">
             <ImageContainer>
               <Image src={producto.image} alt="producto" />
             </ImageContainer>
@@ -142,7 +72,7 @@ const Cart = () => {
             <Marcador>Cantidad: {producto.marcador}</Marcador>
           </Lista>
           <Div1>
-            <Desc style={{ marginBottom: "1rem" }}>
+            <Desc>
               <strong>Precio: </strong>
               {producto.price.toFixed(1) * producto.marcador} U$D
             </Desc>
@@ -156,11 +86,8 @@ const Cart = () => {
         <>
           <div
             style={{
-              backgroundColor: "#fdfd3f",
-              color: "#1a1a1a",
-              height: "3rem",
-              width: "80%",
-              margin: "1rem auto 1rem auto",
+              backgroundColor: "#ffe600",
+              color: "#003a39",
             }}
           >
             <h3 style={{ padding: "10px", fontWeight: "400" }}>
@@ -168,11 +95,6 @@ const Cart = () => {
             </h3>
           </div>
           <BuyBtn
-            style={{
-              marginTop: "0rem",
-              fontWeight: "900",
-              marginLeft: "1.8rem",
-            }}
             onClick={() => handleOrder()}
           >
             Finalizar Compra
@@ -194,3 +116,69 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const Lista = styled.div`
+  max-width: 80vw;
+  min-height: 35vh;
+  background-color: #eeeded;
+  display: flex;
+  align-items: center;
+  margin: 1rem auto 0 auto;
+`;
+
+const ImageContainer = styled.div`
+  width: 4rem;
+  margin: 20px 20px 0px 20px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 20px;
+`;
+
+const Image = styled.img`
+  max-width: 3.5rem;
+  max-height: 4rem;
+  padding: 0px;
+`;
+
+const Desc = styled.span`
+  color: #242020;
+  font-weight: 400;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+const Marcador = styled.span`
+  width: 150px;
+  color: #242020;
+  font-weight: 800;
+  margin: 20px 20px 0px 20px;
+`;
+
+const Div1 = styled.div`
+  width: 80vw;
+  height: 3vh;
+  background-color: #eeeded;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto 0 auto;
+  padding-bottom: 20px;
+`;
+
+const RemoveBtn = styled.button`
+  background-color: #fe4a49;
+  width: 150px;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+`;
+
+const BuyBtn = styled.button`
+  background-color: #2d3277;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+`;

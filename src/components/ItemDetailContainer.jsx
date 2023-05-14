@@ -4,54 +4,8 @@ import { useParams } from "react-router-dom";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
-import { PacmanLoader } from "react-spinners";
+import { BarLoader } from "react-spinners";
 import { traerUnProducto } from "../services/firestore";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  min-width: 8rem;
-  min-height: 8rem;
-  margin-top: 5rem;
-  padding: 2rem;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-`;
-
-const Ficha = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Image = styled.img`
-  width: 200px;
-  margin-left: 4rem;
-  margin-right: 4rem;
-`;
-
-const Desc = styled.p`
-  width: 500px;
-`;
-
-const Agrupar = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
-
-const CarritoBtn = styled.button`
-  width: 12rem;
-  height: 3rem;
-  background-color: #1515ab;
-  color: white;
-  font-weight: bold;
-  margin-top: 8rem;
-  margin-right: 10rem;
-  cursor: pointer;
-`;
 
 const ItemDetailContainer = () => {
   const { productId } = useParams();
@@ -76,11 +30,11 @@ const ItemDetailContainer = () => {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <Agrupar>
-      <Container>
+    <Agrupar className="single">
+      <Container className="product">
         {!productos && (
-          <PacmanLoader
-            color="#3f8bfc"
+          <BarLoader
+            color="#2d3277"
             cssOverride={{ marginTop: "2rem", marginRight: "5rem" }}
             margin={6}
             size={25}
@@ -98,16 +52,67 @@ const ItemDetailContainer = () => {
             </Desc>
           </Ficha>
         )}
+        {!isAddedToCart ? (
+          <ItemCount onAdd={handleToCart} stock={5} />
+        ) : (
+          <Link to="/cart">
+            <CarritoBtn>Ir a Carrito</CarritoBtn>
+          </Link>
+        )}
       </Container>
-      {!isAddedToCart ? (
-        <ItemCount onAdd={handleToCart} stock={5} />
-      ) : (
-        <Link to="/cart">
-          <CarritoBtn>Ir a Carrito</CarritoBtn>
-        </Link>
-      )}
     </Agrupar>
   );
 };
 
 export default ItemDetailContainer;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  min-width: 8rem;
+  min-height: 8rem;
+  margin-top: 5rem;
+  padding: 2rem;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+`;
+
+const Ficha = styled.div`
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 50px;
+`;
+
+const Image = styled.img`
+  width: 200px;
+  margin-left: 4rem;
+  margin-right: 4rem;
+`;
+
+const Desc = styled.p``;
+
+const Agrupar = styled.div`
+  margin: auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const CarritoBtn = styled.button`
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  width: 100px;
+  height: 40px;
+  background-color: #1515ab;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+`;

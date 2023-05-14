@@ -1,47 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  width: 15rem;
-  height: 7rem;
-  margin-left: 2rem;
-  margin-right: 10rem;
-  margin-top: 5rem;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-`;
-
-const Contador = styled.div`
-`;
-
-const Boton = styled.button`
-  width: 1.5rem;
-  height: 1.5rem;
-  background-color: lightgray;
-`;
-
-const Numero = styled.span`
-  padding: 1rem;
-`;
-
-const CarritoBtn = styled.button`
-  width: 60%;
-  height: 2rem;
-  background-color: #1515ab;
-  color: white;
-  font-weight: bold;
-  margin-top: 1.5rem;
-  cursor: pointer;
-`;
-
-const ItemCount = ({stock, onAdd}) => {
-
+const ItemCount = ({ stock, onAdd }) => {
   const [marcador, setMarcador] = useState(1);
 
   const suma = () => {
@@ -60,12 +20,45 @@ const ItemCount = ({stock, onAdd}) => {
     <Container>
       <Contador>
         <Boton onClick={resta}>-</Boton>
-        <Numero id='cartValue'>{marcador}</Numero>
+        <Numero id="cartValue">{marcador}</Numero>
         <Boton onClick={suma}>+</Boton>
       </Contador>
-      <CarritoBtn onClick={() => onAdd(marcador)}>Terminar compra</CarritoBtn>
+      <CarritoBtn onClick={() => onAdd(marcador)}>Añadir al carrito</CarritoBtn>
     </Container>
   );
 };
 
 export default ItemCount;
+
+const Container = styled.div`
+  width: 200px;
+  height: 150px;
+  margin: auto;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const Contador = styled.div``;
+
+const Boton = styled.button`
+  width: 25px;
+  height: 25px;
+  background-color: lightgray;
+`;
+
+const Numero = styled.span`
+  padding: 1rem;
+`;
+
+const CarritoBtn = styled.button`
+  width: 60%;
+  height: 2rem;
+  background-color: #1515ab;
+  color: white;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  cursor: pointer;
+`;
