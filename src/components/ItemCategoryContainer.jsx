@@ -38,37 +38,12 @@ const { categoryId } = useParams();
 
 const [ productos, setProductos ] = useState([]);
 
-// useEffect(() => {
-
-// if(categoryId === 'jewelery') {
-//     obtenerJewerly();
-// } else if (categoryId === 'electronics') {
-//     obtenerElectronics();
-// }
-
-// }, [categoryId])
-
 useEffect(() => {
     traerProductosDeCategoria(categoryId)
       .then((res) => {
         setProductos(res);        
       })
   }, [categoryId]);
-
-
-// const obtenerJewerly = async() => {
-//     setProductos([]);
-//     const res = await fetch('https://fakestoreapi.com/products/category/jewelery'); 
-//     const data = await res.json();
-//     setProductos(data);
-// }
-
-// const obtenerElectronics = async() => {
-//     setProductos([]);
-//     const res = await fetch('https://fakestoreapi.com/products/category/electronics'); 
-//     const data = await res.json();
-//     setProductos(data);
-// }
 
   return (
     <Container>
