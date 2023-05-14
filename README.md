@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# My portfolio
 E-COMMERCE example for my portfolio!
 
 
-## Available Scripts
+## How to use
 
 This e-commerce has been made to show some basic implementations of :
 
