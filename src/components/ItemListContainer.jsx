@@ -17,7 +17,7 @@ const ItemStore = () => {
         <BarLoader
           color="#2d3277"
           cssOverride={{ margin: 'auto' }}
-          size={35}
+          size={55}
         />
       )}
       {productos.map((producto) => {

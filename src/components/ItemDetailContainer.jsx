@@ -36,7 +36,7 @@ const ItemDetailContainer = () => {
           <BarLoader
             color="#2d3277"
             cssOverride={{ magin: 'auto' }}
-            size={25}
+            size={55}
           />
         )}
         {productos && (
