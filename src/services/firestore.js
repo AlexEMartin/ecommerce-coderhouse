@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, getDoc, query, where, doc, collection, setDoc, addDoc, Timestamp } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZpujHxpfARg_8etW735CiUhHWKIDzaCE",
+  apiKey: `${process.env.REACT_APP_FIREBASE_APIKEY}`,
   authDomain: "ecommerce-coderjaus.firebaseapp.com",
   projectId: "ecommerce-coderjaus",
   storageBucket: "ecommerce-coderjaus.appspot.com",
-  messagingSenderId: "315235444072",
-  appId: "1:315235444072:web:64bf124697aa21bbd322dd"
+  messagingSenderId: `${process.env.REACT_APP_FIREBASE_MSG_ID}`,
+  appId: `${process.env.REACT_APP_FIREBASE_APPID}`
 };
 
 const appFirebase = initializeApp(firebaseConfig);

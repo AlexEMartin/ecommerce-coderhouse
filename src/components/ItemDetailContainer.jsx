@@ -63,6 +63,7 @@ const ItemDetailContainer = () => {
       setProductos(res);
       console.log(productos);
     });
+    // eslint-disable-next-line
   }, [productId]);
 
   const [isAddedToCart, setAddedToCart] = useState(false);
